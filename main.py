@@ -29,7 +29,24 @@ def on_mouse_down(button, pos):
     global puan
     
     if button == mouse.LEFT:
+        if bonus1.collidepoint(pos) and puan >= 15:
+            puan -= 15
+            schedule_interval(bonus_1_icin, 2)
+            
+        if bonus1.collidepoint(pos) and puan >= 200:
+            puan -= 200
+            schedule_interval(bonus_2_icin, 2)
+            
+            
         if zurafa.collidepoint(pos):
             zurafa.y = 200
             animate(zurafa, tween='bounce_end', duration=0.5, y=250)
             puan = puan + tiklama
+            
+def bonus_1_icin():
+    global puan
+    puan += 1
+
+def bonus_2_icin():
+    global puan
+    puan += 15
